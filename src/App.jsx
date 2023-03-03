@@ -3,7 +3,6 @@ import {fetchWeather} from "./http/WeatherApi.js";
 import {useContext, useEffect, useState} from "react";
 import {observer} from "mobx-react";
 import {Context} from "./main.jsx";
-import {createLogger} from "vite";
 
 const App = observer(() => {
     const {country} = useContext(Context)
@@ -15,14 +14,6 @@ const App = observer(() => {
     const fetch = async (reg) => {
         await fetchWeather(reg).then(res => res.json()).then(res => country.setCountry(res))
     }
-
-    // ДОДЕЛАТЬ ОШИБКУ //
-
-
-
-
-
-    // ДОДЕЛАТЬ ОШИБКУ //
 
     return (
         <div className="App">
