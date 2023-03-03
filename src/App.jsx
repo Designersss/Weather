@@ -11,22 +11,24 @@ const App = observer(() => {
     const [region, setRegion] = useState('')
     const [addHtml, setAddHtml] = useState(false)
     const [countries, setCountries] = useState([])
+    const idNow = Math.random().toString(36).substr(2, 9) + 1
     const fetch = (reg) => {
         fetchWeather(reg).then(res => res.json()).then(res => country.setCountry(res))
     }
     const finalWeather = () => {
         fetch(region)
         setTimeout(() => {
-            users.id = Date.now()
             users.name = country.country.location.name
             users.location = country.country.location.country
             users.temp = country.country.current.temp_c
+            users.img = country.country.current.condition.icon
             setCountries([...countries, users])
             console.log(countries)
             console.log(country.country)
             setAddHtml(true)
         }, 500)
     }
+    console.log(Math.random().toString(36).substr(5, 20))
     return (
         <div className="App">
             <input type="text" value={region} onChange={e => setRegion(e.target.value)}/>

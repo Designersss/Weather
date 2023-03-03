@@ -3,10 +3,11 @@ import {observer} from "mobx-react";
 
 const WeatherPages = observer(({countries}) => {
     return (
-        <div>
+        <div className='w-52 h-14 shadow-2xl'>
             {countries.name}
             {countries.location}
             {countries.temp}
+            <img src={countries.img} alt="qwe"/>
         </div>
     );
 });
