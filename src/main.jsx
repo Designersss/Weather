@@ -11,6 +11,6 @@ root.render(
     <Context.Provider value={{
         country: new CountryStore()
     }}>
-        <App/>
+        <App />
     </Context.Provider>
 );
