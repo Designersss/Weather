@@ -12,6 +12,7 @@ const App = observer(() => {
     const [addHtml, setAddHtml] = useState(false)
     const [countries, setCountries] = useState([])
     const idNow = Math.random().toString(36).substr(2, 9) + 1
+    let id = 1
     const fetch = (reg) => {
         fetchWeather(reg).then(res => res.json()).then(res => country.setCountry(res))
     }
@@ -26,15 +27,16 @@ const App = observer(() => {
             setAddHtml(true)
         }, 500)
     }
-    let id = 1
     return (
         <div className="App">
-            <input type="text" value={region} onChange={e => setRegion(e.target.value)}/>
-            <button onClick={finalWeather}>GO</button>
+            <div className='flex justify-center items-center'>
+                <input className='flex p-4 shadow-2xl outline-0' type="text" value={region} onChange={e => setRegion(e.target.value)}/>
+                <button className='flex p-4 shadow-2xl' onClick={finalWeather}>Поиск</button>
+            </div>
             {addHtml
                 ?
                     <div>
-                        <div className='grid grid-cols-2 gap-8'>
+                        <div className='grid grid-cols-2 gap-8 mt-20'>
                             {countries.map(reg =>
                                 <div key={id++}>
                                     <WeatherPages countries={reg} />
@@ -43,8 +45,8 @@ const App = observer(() => {
                         </div>
                     </div>
                 :
-                    <div>
-                        NON
+                    <div className='flex justify-center items-center mt-12'>
+                        Найдите погоду
                     </div>
 
             }
