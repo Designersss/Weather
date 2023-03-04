@@ -23,12 +23,10 @@ const App = observer(() => {
             users.temp = country.country.current.temp_c
             users.img = country.country.current.condition.icon
             setCountries([...countries, users])
-            console.log(countries)
-            console.log(country.country)
             setAddHtml(true)
         }, 500)
     }
-    console.log(Math.random().toString(36).substr(5, 20))
+    let id = 1
     return (
         <div className="App">
             <input type="text" value={region} onChange={e => setRegion(e.target.value)}/>
@@ -36,9 +34,9 @@ const App = observer(() => {
             {addHtml
                 ?
                     <div>
-                        <div>
+                        <div className='grid grid-cols-2 gap-8'>
                             {countries.map(reg =>
-                                <div key={reg.id}>
+                                <div key={id++}>
                                     <WeatherPages countries={reg} />
                                 </div>
                             )}

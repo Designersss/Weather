@@ -1,5 +1,6 @@
 export const users = {
-    id: Math.random().toString(36).substr(2, 9) + 1,
+    primaryKey: true,
+    autoIncrement: true,
     name: '',
     location: '',
     temp: '',
